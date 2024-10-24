@@ -12,6 +12,7 @@ pipeline {
         stage('Check Maven Version') {
             steps {
                 // Kiểm tra phiên bản Maven
+                echo "MAVEN_HOME is ${MAVEN_HOME}"
                 sh "${MAVEN_HOME}/bin/mvn -v"
             }
         }
