@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        MAVEN_HOME = tool 'Maven from tool' // Tên Maven đã cấu hình trong Jenkins
+        MAVEN_HOME = tool 'Maven from config' // Tên Maven đã cấu hình trong Jenkins
     }
     stages {
         stage('Hello') {
