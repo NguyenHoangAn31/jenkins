@@ -3,11 +3,11 @@ pipeline {
     agent any
     
     environment {
-        MAVEN_HOME = tool 'Maven from config'
+        MAVEN_HOME = tool 'Maven'
     }
 
      tools {
-        Maven 'Maven from config'
+        Maven 'Maven'
     }
     
     stages {
