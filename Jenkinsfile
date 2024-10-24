@@ -7,7 +7,7 @@ pipeline {
     }
 
      tools {
-        Maven 'Maven'
+        Maven 'Maven from config'
     }
     
     stages {
