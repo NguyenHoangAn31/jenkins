@@ -14,5 +14,13 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/NguyenHoangAn31/jenkins.git'
             }
         }
+
+        stage('Test Docker') {
+            steps {
+                script {
+                    sh 'docker --version'
+                }
+            }
+        }
     }
 }
