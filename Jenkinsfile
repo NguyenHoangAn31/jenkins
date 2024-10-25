@@ -14,6 +14,7 @@ pipeline {
             steps {
                 sh 'docker -v'
             }
+        }
         
         // stage('Checkout') {
         //     steps {
