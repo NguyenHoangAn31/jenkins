@@ -1,22 +1,14 @@
 pipeline {
     agent any
 
-   
+    tools {
+        jdk 'jdk-21' // Cấu hình Jenkins để sử dụng JDK 21 đã được cài đặt
+    }
 
     stages {
-        stage('Set Java Home') {
+        stage('Check Maven Version') {
             steps {
-                script {
-                    // Thiết lập JAVA_HOME
-                    env.JAVA_HOME = '/var/jenkins_home/jdk-21'
-                    env.PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
-                }
-            }
-        }
-        stage('Check Java and Maven Version') {
-            steps {
-                sh 'echo $JAVA_HOME' // Kiểm tra biến JAVA_HOME đã thiết lập đúng chưa
-                sh 'java -version' // Kiểm tra phiên bản Java
+                sh 'java -version' // Kiểm tra phiên bản Java hiện đang sử dụng
             }
         }
     }
