@@ -1,0 +1,38 @@
+//install REST Client extension
+//select command you want to run . Ctrl + p , enter Send Request 
+
+
+//find all
+GET http://localhost:8080/api/category/all
+
+
+//edit
+PUT http://localhost:8080/api/category/edit/cate1
+Content-Type: application/json
+
+{
+  "status":true,
+  "name": "iphone"
+}
+
+//create
+POST http://localhost:8080/api/category/create
+Content-Type: application/json
+
+{
+  "id":"leuleu",
+  "status":true,
+  "name": "leuleu"
+}
+
+//find by name
+GET http://localhost:8080/api/category/name/iphone
+
+
+//delete
+DELETE http://localhost:8080/api/category/delete/e61ae87d-91b4-46c5-be9f-699f20d34981
+
+
+
+
+
