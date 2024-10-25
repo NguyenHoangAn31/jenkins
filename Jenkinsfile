@@ -24,10 +24,10 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        // stage('Build Docker Image') {
-        //     steps {
-        //         sh 'docker build -t nguyenhoangan31/dockerhub:first_version .'
-        //     }
-        // }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t nguyenhoangan31/dockerhub:first_version .'
+            }
+        }
     }
 }
