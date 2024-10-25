@@ -1,14 +1,19 @@
 pipeline {
     agent any
-
-    tools {
-        jdk 'jdk-21' // Cấu hình Jenkins để sử dụng JDK 21 đã được cài đặt
-    }
-
+    
     stages {
-        stage('Check Maven Version') {
+        stage('Build with Java 21') {
+            agent {
+                docker {
+                    image 'openjdk:21-jdk'  // Sử dụng Docker image với Java 21
+                    args '-v /root/.m2:/root/.m2'  // Mount thư mục Maven cache để giảm thời gian build
+                }
+            }
             steps {
-                sh 'java -version' // Kiểm tra phiên bản Java hiện đang sử dụng
+                script {
+                    // Chạy các lệnh Maven bên trong container với Java 21
+                    sh 'mvn clean install'
+                }
             }
         }
     }
