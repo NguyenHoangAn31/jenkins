@@ -6,7 +6,6 @@ pipeline {
     tools {
         jdk 'jdk-21'
         maven 'Maven'
-        dockerTool 'docker'
     }
     
     stages {
