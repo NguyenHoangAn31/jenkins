@@ -14,6 +14,10 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/NguyenHoangAn31/jenkins.git'
             }
         }
-
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
     }
 }
