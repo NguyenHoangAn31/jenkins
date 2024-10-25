@@ -6,6 +6,8 @@ pipeline {
     tools {
         jdk 'jdk-21'
         maven 'Maven'
+        docker 'docker' // Sử dụng tool Docker đã đặt tên là "docker" trong Jenkins
+
     }
     
     stages {
