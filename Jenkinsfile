@@ -9,10 +9,9 @@ pipeline {
     }
     
     stages {
-        stage('Check Java Version') {
+        stage('Checkout') {
             steps {
-                sh 'mvn -v'
-                sh 'java --version'
+                git 'https://github.com/NguyenHoangAn31/jenkins.git'
             }
         }
     }
