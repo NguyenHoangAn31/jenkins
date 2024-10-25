@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Chạy các lệnh Maven bên trong container với Java 21
-                    sh 'mvn clean install'
+                    sh 'mvn -v'
                 }
             }
         }
