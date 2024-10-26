@@ -6,7 +6,7 @@ pipeline {
     tools {
         jdk 'jdk-21'
         maven 'Maven'
-        dockerTool 'docker' // Sử dụng tool Docker đã đặt tên là "docker" trong Jenkins
+        dockerTool 'docker'
 
     }
     
@@ -29,6 +29,11 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t nguyenhoangan31/dockerhub:first_version .'
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                sh 'docker push nguyenhoangan31/dockerhub:first_version' 
             }
         }
     }
