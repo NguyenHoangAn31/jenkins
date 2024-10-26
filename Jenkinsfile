@@ -33,7 +33,10 @@ pipeline {
         }
         stage('Push Docker Image') {
             steps {
-                sh 'docker push nguyenhoangan31/dockerhub:first_version' 
+                withCredentials([usernamePassword(credentialsId: 'docker_credential', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                    sh 'docker push nguyenhoangan31/dockerhub:first_version'
+                }
             }
         }
     }
