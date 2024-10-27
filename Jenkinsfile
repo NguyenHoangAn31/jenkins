@@ -41,7 +41,7 @@ pipeline {
         stage('SSH to Remote Server') {
             steps {
                 sshagent(['private_key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no root@172.17.0.2 "command_to_run"'
+                    sh 'ssh -o StrictHostKeyChecking=no root@172.17.0.2 "whoami"'
                 }
             }
         }
