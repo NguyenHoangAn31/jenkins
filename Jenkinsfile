@@ -7,7 +7,6 @@ pipeline {
         jdk 'jdk-21'
         maven 'Maven'
         dockerTool 'docker'
-
     }
     
     stages {
@@ -21,21 +20,28 @@ pipeline {
         //         sh 'mvn test'
         //     }
         // }
-        stage('Build') {
+        // stage('Build') {
+        //     steps {
+        //         sh 'mvn clean install'
+        //     }
+        // }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         sh 'docker build -t nguyenhoangan31/dockerhub:first_version .'
+        //     }
+        // }
+        // stage('Push Docker Image') {
+        //     steps {
+        //         withCredentials([usernamePassword(credentialsId: 'docker_credential', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+        //             sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+        //             sh 'docker push nguyenhoangan31/dockerhub:first_version'
+        //         }
+        //     }
+        // }
+        stage('SSH to Remote Server') {
             steps {
-                sh 'mvn clean install'
-            }
-        }
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t nguyenhoangan31/dockerhub:first_version .'
-            }
-        }
-        stage('Push Docker Image') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'docker_credential', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-                    sh 'docker push nguyenhoangan31/dockerhub:first_version'
+                sshagent(['private_key']) {
+                    sh 'ssh -o StrictHostKeyChecking=no root@172.17.0.2 "command_to_run"'
                 }
             }
         }
